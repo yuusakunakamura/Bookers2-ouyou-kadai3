@@ -1,0 +1,50 @@
+
+<% if flash[:notice]%>
+<%= flash[:notice] %>
+<% end %>
+
+<div class="row">
+
+<div class="col-xs-3">
+<h2>User info</h2>
+ <%= render 'users/userinfo', user: @user %>
+ 
+
+ <%= render 'books/bookform', book: @book %>
+</div>
+
+
+
+<div class="col-xs-9">
+
+<h2>Books</h2>
+    <!--books一覧 -->
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @books.each do |book| %>
+        <tr>
+          <td>
+            <%= link_to (book.user) do %>
+            <%= attachment_image_tag book.user, :profile_image, format: 'jpg', fallback: "no_image.jpg.png", size: "40x40" %>
+            <% end %>
+          </td>
+          <td><%= link_to book.title,book, class: "book_#{book.id}" %></td>
+          <td><%= book.body %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <!--books一覧 -->
+
+  </div>
+  </div>
+  

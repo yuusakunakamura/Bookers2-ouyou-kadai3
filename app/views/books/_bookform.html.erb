@@ -1,0 +1,22 @@
+<table class="table">
+<h2>New book</h2>
+
+<%= form_for(book, url: '/books') do |f| %>
+
+
+<div class="field row">
+<h4>title</h4>
+<%= f.text_field :title, class: "col-xs-12" %>
+</div>
+
+ <div class="field row">
+<h4>Opinion</h4>
+<%= f.text_area :body, class: "col-xs-12" %>
+</div>
+
+<div class="field row">
+<br><%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %></br>
+</div>
+<% end %> 
+
+</table>

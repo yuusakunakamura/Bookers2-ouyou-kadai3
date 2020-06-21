@@ -1,0 +1,27 @@
+
+
+<h2>User info</h2>
+
+<%= form_for(@user) do |f| %>
+
+<!-- エラーメッセージ表示-->
+<% if @user.errors.any? %>
+	<h3><%= pluralize(@user.errors.count, "error") %>prohibited this user from being saved:</h3>
+	<ul>
+		<% @user.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
+    
+
+    <h4>Name</h4>
+    <%= f.text_field :name %>
+    <h4>Image</h4>
+    <%= f.attachment_field :profile_image, class: "user_image" %>
+    <h4>introduction</h4>
+      <%= f.text_area :introduction %>
+
+    <%= f.submit 'Update User' %>
+
+<% end %>
